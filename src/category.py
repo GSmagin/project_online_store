@@ -1,24 +1,19 @@
-from product import Product
-
-
 class Category:
+    """
+    total_categories всего категорий
+    :total_unique_products всего уникальные продукты
+    """
     total_categories = 0
-    total_unique_products = set()
+    total_unique_products = 0
 
-    def __init__(self, name: str, description: str):
+    def __init__(self, name: str, description: str, products: list):
+        """
+        :name название
+        :description описание
+        :products товары
+        """
         self.name = name
         self.description = description
-        self.products = []
+        self.products = products
         Category.total_categories += 1
-
-    def add_product(self, product: Product):
-        self.products.append(product)
-        Category.total_unique_products.add(product.name)
-
-    def remove_product(self, product: Product):
-        if product in self.products:
-            self.products.remove(product)
-            Category.total_unique_products.remove(product.name)
-        else:
-            print(f"{product.name} is not in {self.name} category.")
-
+        Category.total_unique_products += len(products)
