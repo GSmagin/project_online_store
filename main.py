@@ -1,26 +1,22 @@
+from src.functions import json_category_product_print
 from src.product import Product
 from src.category import Category
-from src.filejson import FileJson
-from confing import dir_json
-from src.functions import products_json_file
-from src.category import Category
-from src.product import Product
-from src.filejson import FileJson
-
 
 
 def main():
-    for products_json in products_json_file():
-        transaction = FileJson(products_json)
-        print(transaction.name)
+    json_category_product_print()
 
-    #
+    product1 = Product("Манго", "Египетское", 300, 20)
+    product2 = Product("Мандарины", "Марроко", 150, 30)
 
+    category1 = Category("Фрукты", "Фрукты импортные", [product1, product2])
+    print(category1.total_categories)
+    print(category1.total_unique_products)
+    print(product1.name)
+    print(product1.description)
+    print(product1.price)
+    print(product1.quantity)
 
-
-
-    # product2 = Product("Манго", "Египетское", 300, 20)
-    # product3 = Product("Мандарины", "Марроко", 150, 30)
 
 if __name__ == "__main__":
     main()
