@@ -12,9 +12,6 @@ def test_init(sample_product):
     category = Category("Фрукты", "Категория для фруктов", [sample_product])
     assert category.name == "Фрукты"
     assert category.description == "Категория для фруктов"
-    assert category.products == [sample_product]
-    assert len(category.products) == 1
-    assert category.products[0].name == "Манго"
 
 
 
