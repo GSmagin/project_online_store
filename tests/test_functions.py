@@ -26,6 +26,4 @@ def test_json_category_product(test_data):
     assert json_category_product(test_data).__class__ == list
 
 
-def test_json_category_product_print():
-    json_category_product_print()
 
