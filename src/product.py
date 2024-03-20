@@ -17,11 +17,7 @@ class Product:
 
     @property
     def price(self):
-        if self.__price <= 0:
-            print("Цена не может быть меньше или равно 0")
-            raise ValueError("Цена не может быть меньше или равно 0")
         return self.__price
-
 
     @price.setter
     def price(self, new_price):
