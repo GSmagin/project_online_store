@@ -13,7 +13,7 @@ def main():
     # category1.product.append(product3)
     category1.product = product3
     print(category1.product)
-
+    print(category1.products_format)
 
 
 if __name__ == "__main__":

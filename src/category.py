@@ -21,9 +21,9 @@ class Category:
         self.total_categories += 1
         self.total_unique_products += len(products)
 
-
     @property
     def product(self):
+        """"Возвращает список продуктов"""
         product_list = []
         for product in self.__products:
             product_list.append({"name": product.name,
@@ -31,23 +31,21 @@ class Category:
                                  "price": product.price,
                                  "quantity": product.quantity})
 
-
         return product_list
 
     @product.setter
     def product(self, product: Product):
         """
         Добавляет продукт в категорию
-        :param product: экземпляр класса Product
+        :product экземпляр класса Product
         """
         self.__products.append(product)
         self.total_unique_products += 1
 
-
-
-
-
-
-
-
-
+    @property
+    def products_format(self) -> list[str]:
+        """Возвращает список продуктов в формате"""
+        product_list = []
+        for product in self.__products:
+            product_list.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
+        return product_list
