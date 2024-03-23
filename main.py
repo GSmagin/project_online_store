@@ -19,7 +19,7 @@ def main():
 
     # for product in category1.product:
         # print(product)
-    for product in CategoryIterator(category1):
+    for product in CategoryIterator(category1.product):
         print(product)
 
 
