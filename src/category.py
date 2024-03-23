@@ -21,6 +21,15 @@ class Category:
         self.total_categories += 1
         self.total_unique_products += len(products)
 
+    def __len__(self) -> int:
+        return len(self.__products)
+
+    def __str__(self) -> str:
+        # Название категории, количество продуктов: 200 шт.
+        return f"{self.name}, количество продуктов: {self.__len__()} шт."
+
+
+
     @property
     def product(self):
         """"Возвращает список продуктов"""
