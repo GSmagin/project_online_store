@@ -4,16 +4,17 @@ class CategoryIterator:
         self.index = 0
 
     def __iter__(self):
-
         return self
 
     def __next__(self):
-        while self.index < len(self.category):
+        if self.index < len(self.category.product):
             # product = self.category[self.index].get("name")
-            product = self.category[self.index]
+            result = self.category.product[self.index]
             self.index += 1
-            return product
-        raise StopIteration
+            return result
+            # return result.get("name")
+        else:
+            raise StopIteration
 
 
 
