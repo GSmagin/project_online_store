@@ -24,9 +24,11 @@ def main():
     iterator1 = CategoryIterator(category1)
 
     for product in iterator1:
-        print(product)
-        # ??? почему не работает???
-        # print(f"name: {product.name}, Description: {product.description}, Price: {product.price}, Quantity: {product.quantity}")
+        # print(product)
+        print(f"name: {product.get("name")},"
+              f" Description: {product.get("description")},"
+              f" Category: {product.get("category")},"
+              f" Price: {product.get("price")}")
 
 
 if __name__ == "__main__":
