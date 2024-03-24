@@ -25,10 +25,11 @@ def main():
 
     for product in iterator1:
         # print(product)
-        print(f"name: {product.get("name")},"
+        print(f"Name: {product.get("name")},"
               f" Description: {product.get("description")},"
               f" Category: {product.get("category")},"
               f" Price: {product.get("price")}")
+    print(category1)
 
 
 if __name__ == "__main__":

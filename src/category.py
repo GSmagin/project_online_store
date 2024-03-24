@@ -22,7 +22,8 @@ class Category:
         self.total_unique_products += len(products)
 
     def __len__(self) -> int:
-        return len(self.__products)
+        return sum(products.quantity for products in self.__products)
+        # return len(self.__products)
 
     def __str__(self) -> str:
         # Название категории, количество продуктов: 200 шт.
