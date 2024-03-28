@@ -14,9 +14,15 @@ class Product:
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
+    # def __add__(self, other):
+    #     """Результат сложения двух продуктов, умноженных на количество на складе"""
+    #     return (self.__price * self.quantity) + (other.price * other.quantity)
+
     def __add__(self, other):
-        """Результат сложения двух продуктов, умноженных на количество на складе"""
+        if not type(self) is type(other):
+            raise TypeError("Нельзя складывать товары разных типов")
         return (self.__price * self.quantity) + (other.price * other.quantity)
+
 
 
 
@@ -37,3 +43,39 @@ class Product:
             self.__price = new_price
 
 
+class Smartphone(Product):
+    def __init__(self, name: str, description: str, price: float, quantity: int,
+                 performance: str, model: str, memory: int, color: str):
+        """
+        :name название
+        :description описание
+        :price цена
+        :quantity количество в наличии
+        :performance производительность
+        :model модель
+        :memory объем встроенной памяти
+        :color цвет
+        """
+        super().__init__(name, description, price, quantity)
+        self.performance = performance
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    def __init__(self, name: str, description: str, price: float, quantity: int,
+                 manufacturer_country: str, germination_period: int, color: str):
+        """
+        :name название
+        :description описание
+        :price цена
+        :quantity количество в наличии
+        :manufacturer_country страна-производитель
+        :germination_period срок прорастания
+        :color цвет
+        """
+        super().__init__(name, description, price, quantity)
+        self.manufacturer_country = manufacturer_country
+        self.germination_period = germination_period
+        self.color = color
