@@ -14,9 +14,15 @@ class Product:
     def __str__(self):
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
+    # def __add__(self, other):
+    #     """Результат сложения двух продуктов, умноженных на количество на складе"""
+    #     return (self.__price * self.quantity) + (other.price * other.quantity)
+
     def __add__(self, other):
-        """Результат сложения двух продуктов, умноженных на количество на складе"""
+        if not type(self) is type(other):
+            raise TypeError("Нельзя складывать товары разных типов")
         return (self.__price * self.quantity) + (other.price * other.quantity)
+
 
 
 
@@ -73,5 +79,3 @@ class LawnGrass(Product):
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
         self.color = color
-
-

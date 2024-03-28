@@ -29,6 +29,14 @@ class Category:
         # Название категории, количество продуктов: 200 шт.
         return f"{self.name}, количество продуктов: {self.__len__()} шт."
 
+    def __add__(self, other):
+        if isinstance(other, Category):
+            return Category(self.name + other.name, self.description + other.description, self.__products + other.__products)
+        elif isinstance(other, Product):
+            return Category(self.name, self.description, self.__products + [other])
+        else:
+            raise TypeError("Неверный тип")
+
 
 
     @property
