@@ -27,8 +27,10 @@ def main():
     smartphone2 = Smartphone("Samsung Galaxy S21", "Смартфон от Samsung",
                              899.0, 15, "Средняя", "S21", 256, "синий")
 
+    lawn_grass1 = LawnGrass("Bluegrass", "Высококачественная трава для газонов", 10.0, 100, "США", 14, "зеленый")
+
     category2 = Category("Смартфоны", "Мобильные телефоны", [smartphone1, smartphone2])
-    result_category = category2 + product3
+    result_category = category2 + smartphone1
     print(result_category.products_format)
 
 
