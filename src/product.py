@@ -1,4 +1,7 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class Product(ABC):
     def __init__(self, name: str, description: str, price: float, quantity: int):
         """
          :name название
@@ -19,12 +22,15 @@ class Product:
     #     return (self.__price * self.quantity) + (other.price * other.quantity)
 
     def __add__(self, other):
+        """Результат сложения двух продуктов, умноженных на количество на складе"""
+        # if not isinstance(other, self.__class__):
         if not type(self) is type(other):
             raise TypeError("Нельзя складывать товары разных типов")
         return (self.__price * self.quantity) + (other.price * other.quantity)
 
-
-
+    @abstractmethod
+    def some_abstract_method(self):
+        pass
 
     @classmethod
     def new_product(cls, name: str, description: str, price: float, quantity: int):
@@ -62,6 +68,10 @@ class Smartphone(Product):
         self.memory = memory
         self.color = color
 
+    def check_minimum_stock(self):
+        if self.quantity < 10:
+            print(f"Внимание! Товар {self.name} на складе осталось меньше 10 единиц.")
+
 
 class LawnGrass(Product):
     def __init__(self, name: str, description: str, price: float, quantity: int,
@@ -79,3 +89,7 @@ class LawnGrass(Product):
         self.manufacturer_country = manufacturer_country
         self.germination_period = germination_period
         self.color = color
+
+    def check_minimum_stock(self):
+        if self.quantity < 10:
+            print(f"Внимание! Товар {self.name} на складе осталось меньше 10 единиц.")
