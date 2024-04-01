@@ -1,7 +1,13 @@
 from abc import ABC, abstractmethod
 
 
-class Product(ABC):
+class ReprMixin:
+    def __repr__(self):
+        attributes = ', '.join([f"{value}" for key, value in self.__dict__.items()])
+        return f"{attributes}"
+
+
+class Product(ABC, ReprMixin):
     def __init__(self, name: str, description: str, price: float, quantity: int):
         """
          :name название
@@ -14,12 +20,11 @@ class Product(ABC):
         self.__price = price
         self.quantity = quantity
 
-    def __str__(self):
-        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    # def __add__(self, other):
-    #     """Результат сложения двух продуктов, умноженных на количество на складе"""
-    #     return (self.__price * self.quantity) + (other.price * other.quantity)
+    # def __str__(self):
+        # return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+        # return f"{self.name},{self.description}, {self.__price}, {self.quantity}."
+
 
     def __add__(self, other):
         """Результат сложения двух продуктов, умноженных на количество на складе"""
@@ -28,9 +33,6 @@ class Product(ABC):
             raise TypeError("Нельзя складывать товары разных типов")
         return (self.__price * self.quantity) + (other.price * other.quantity)
 
-    @abstractmethod
-    def some_abstract_method(self):
-        pass
 
     @classmethod
     def new_product(cls, name: str, description: str, price: float, quantity: int):
@@ -48,8 +50,12 @@ class Product(ABC):
         else:
             self.__price = new_price
 
+    @abstractmethod
+    def check_minimum_stock(self):
+        pass
 
-class Smartphone(Product, ABC):
+
+class Smartphone(Product):
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  performance: str, model: str, memory: int, color: str):
         """
@@ -73,7 +79,7 @@ class Smartphone(Product, ABC):
             print(f"Внимание! Товар {self.name} на складе осталось меньше 10 единиц.")
 
 
-class LawnGrass(Product, ABC):
+class LawnGrass(Product):
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  manufacturer_country: str, germination_period: int, color: str):
         """
