@@ -49,7 +49,7 @@ class Product(ABC):
             self.__price = new_price
 
 
-class Smartphone(Product):
+class Smartphone(Product, ABC):
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  performance: str, model: str, memory: int, color: str):
         """
@@ -73,7 +73,7 @@ class Smartphone(Product):
             print(f"Внимание! Товар {self.name} на складе осталось меньше 10 единиц.")
 
 
-class LawnGrass(Product):
+class LawnGrass(Product, ABC):
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  manufacturer_country: str, germination_period: int, color: str):
         """
