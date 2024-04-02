@@ -7,7 +7,16 @@ class ReprMixin:
         return f"{attributes}"
 
 
-class Product(ABC, ReprMixin):
+class AbstractProduct(ABC):
+    """ Базовый абстрактный класс для продуктов """
+
+    @abstractmethod
+    def check_minimum_stock(self):
+        """ Проверка наличия на складе остатка меньше количества 10 штук """
+        pass
+
+
+class Product(AbstractProduct, ReprMixin):
     def __init__(self, name: str, description: str, price: float, quantity: int):
         """
          :name название
@@ -50,12 +59,12 @@ class Product(ABC, ReprMixin):
         else:
             self.__price = new_price
 
-    @abstractmethod
     def check_minimum_stock(self):
-        pass
+        if self.quantity < 10:
+            print(f"Внимание! Товар {self.name} на складе осталось меньше 10 единиц.")
 
 
-class Smartphone(Product):
+class Smartphone(Product, ReprMixin):
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  performance: str, model: str, memory: int, color: str):
         """
@@ -79,7 +88,7 @@ class Smartphone(Product):
             print(f"Внимание! Товар {self.name} на складе осталось меньше 10 единиц.")
 
 
-class LawnGrass(Product):
+class LawnGrass(Product, ReprMixin):
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  manufacturer_country: str, germination_period: int, color: str):
         """

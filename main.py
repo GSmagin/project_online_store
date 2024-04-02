@@ -8,10 +8,10 @@ from src.categoryiterator import CategoryIterator
 def main():
     # json_category_product_print()
 
-    #product1 = Product("Манго", "Египетское", 20, 20)
-    #product2 = Product("Мандарины", "Марроко", 150, 25)
-    #product3 = Product("Бананы", "Эквадор", 165, 65)
-    #category1 = Category("Фрукты", "Фрукты импортные", [product1, product2,  product3])
+    product1 = Product("Манго", "Египетское", 20, 20)
+    product2 = Product("Мандарины", "Марроко", 150, 25)
+    product3 = Product("Бананы", "Эквадор", 165, 65)
+    category1 = Category("Фрукты", "Фрукты импортные", [product1, product2,  product3])
     # category1.product = product3
     # print(category1.product)
     # print(category1)
@@ -38,6 +38,8 @@ def main():
     # print("Сумма товаров:", result_smartphone)
     #
     # print(isinstance(product3, Product))
+    print(product3)
+    print(smartphone2)
     print(lawn_grass1)
 
 
