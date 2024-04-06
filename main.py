@@ -10,7 +10,7 @@ def main():
 
     product1 = Product("Манго", "Египетское", 20, 20)
     product2 = Product("Мандарины", "Марроко", 150, 25)
-    product3 = Product("Бананы", "Эквадор", 165, 65)
+    product3 = Product("Бананы", "Эквадор", 165, 25)
     category1 = Category("Фрукты", "Фрукты импортные", [product1, product2,  product3])
     # category1.product = product3
     # print(category1.product)

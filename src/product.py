@@ -24,6 +24,8 @@ class Product(AbstractProduct, ReprMixin):
          :price цена
          :quantity количество в наличии
          """
+        if quantity <= 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен.")
         self.name = name
         self.description = description
         self.__price = price

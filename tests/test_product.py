@@ -6,11 +6,13 @@ from src.product import Product, Smartphone, LawnGrass
 def sample_product():
     return Product("Манго", "Египетское", 300, 20)
 
+
 @pytest.fixture
 def sample_product_smartphone():
     smartphone1 = Smartphone("iPhone 13", "Смартфон от Apple", 999.0,
                              20, "Высокая", "13", 128, "черный")
     return smartphone1
+
 
 @pytest.fixture
 def sample_product_smartphone2():
@@ -18,12 +20,12 @@ def sample_product_smartphone2():
                              899.0, 15, "Средняя", "S21", 256, "синий")
     return smartphone2
 
+
 @pytest.fixture
 def sample_product_lawngrass1():
     lawn_grass1 = LawnGrass("Bluegrass", "Высококачественная трава для газонов",
                             10.0, 100, "США", 14, "зеленый")
     return lawn_grass1
-
 
 
 def test_init(sample_product):
@@ -44,7 +46,7 @@ def test_add(sample_product_smartphone, sample_product_smartphone2, sample_produ
         result = smartphone1 + lawn_grass1
 
 
-
-
-
+def test_product_0():
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен."):
+        Product("Манго", "Египетское", 300, 0)
 
