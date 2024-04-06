@@ -1,10 +1,21 @@
 import pytest
+from src.category import Category
 from src.product import Product, Smartphone, LawnGrass
 
 
 @pytest.fixture
 def sample_product():
     return Product("Манго", "Египетское", 300, 20)
+
+
+@pytest.fixture
+def sample_product2():
+    return Product("Мандарины", "Марроко", 150, 25)
+
+
+@pytest.fixture
+def sample_product3():
+    return Product("Бананы", "Эквадор", 165, 25)
 
 
 @pytest.fixture
@@ -50,3 +61,8 @@ def test_product_0():
     with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен."):
         Product("Манго", "Египетское", 300, 0)
 
+
+def test_product_price_average(sample_product, sample_product2, sample_product3):
+    category = Category("Фрукты", "Фрукты импортные",
+                        [sample_product, sample_product2, sample_product3])
+    assert category.average_price() == 205.0

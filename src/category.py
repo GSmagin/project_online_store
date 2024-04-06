@@ -37,7 +37,13 @@ class Category:
         else:
             raise TypeError("Неверный тип")
 
-
+    def average_price(self):
+        """Возвращает среднюю цену продуктов"""
+        try:
+            total_price = sum(product.price for product in self.__products)
+            return round(total_price / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0
 
     @property
     def product(self):
@@ -50,6 +56,7 @@ class Category:
                                  "quantity": product.quantity})
 
         return product_list
+
 
     @product.setter
     def product(self, product: Product):
