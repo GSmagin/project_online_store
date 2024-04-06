@@ -66,3 +66,8 @@ def test_product_price_average(sample_product, sample_product2, sample_product3)
     category = Category("Фрукты", "Фрукты импортные",
                         [sample_product, sample_product2, sample_product3])
     assert category.average_price() == 205.0
+
+
+def test_product_category_0(sample_product, sample_product2, sample_product3):
+    category = Category("", "", "")
+    assert category.average_price() == 0
