@@ -33,6 +33,7 @@ def json_category_product(data=load_json()):
 
 
 def json_category_product_print():
+    """Выводит информацию о категориях и их продуктах"""
 
     for category in json_category_product():
         print("Категория:", category.name)
